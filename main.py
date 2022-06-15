@@ -63,7 +63,7 @@ def MsgInsert(msg,id,user):
 def commands(msg):
     if msg == "online" or msg == "Online":
         #On récupère les valeurs de la page web
-        url = Vars.chemin+"tchat/tchat.php?task=online"
+        url = Vars.chemin+"Programme/tchat/tchat.php?task=online"
         response = requests.get(url)
         Vars.ChampsRetour.insert(END,"\n Utilisateur connecté(e) :\n")
         if response.ok:
@@ -91,14 +91,14 @@ def send(event):
     Message = Vars.ChampsEnvoie.get()
     if commands(Message) == False:
         Vars.ChampsEnvoie.delete(0, END)
-        url = Vars.chemin+"tchat/tchat.php?task=send&user="+Vars.user+"&content="+Message
+        url = Vars.chemin+"Programme/tchat/tchat.php?task=send&user="+Vars.user+"&content="+Message
         response = requests.get(url)
 
 def sends():
     Message = Vars.ChampsEnvoie.get()
     if commands(Message) == False:
         Vars.ChampsEnvoie.delete(0, END)
-        url = Vars.chemin+"tchat/tchat.php?task=send&user="+Vars.user+"&content="+Message
+        url = Vars.chemin+"Programme/tchat/tchat.php?task=send&user="+Vars.user+"&content="+Message
         response = requests.get(url)
 
 def prints():
@@ -116,7 +116,7 @@ def prints():
                     Vars.ChampsRetour.insert("end",str(contenue[posi*(-1)])+"\n")
 
             #On récupère les valeurs de la page web
-            url = Vars.chemin+"tchat/tchat.php?task=print&id="+str(Vars.id)+"&user="+Vars.user
+            url = Vars.chemin+"Programme/tchat/tchat.php?task=print&id="+str(Vars.id)+"&user="+Vars.user
             response = requests.get(url)
             if response.ok:
                 links = []
